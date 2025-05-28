@@ -13,17 +13,37 @@ header, footer {
   padding: 1em 0;
 }
 
-section {
-  padding: 20px;
-  margin: 10px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+.container {
+  display: flex;
+  min-height: 80vh;
 }
 
-iframe {
-  margin: 10px 0;
-  width: 100%;
-  max-width: 700px;
-  height: 360px;
+.sidebar {
+  width: 50%;
+  padding: 20px;
+  border-right: 2px solid #ccc;
+  background: #fff;
+}
+
+.content {
+  width: 50%;
+  background-color: #cce5ff;
+  padding: 20px;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+li {
+  margin: 0.5em 0;
+}
+
+a {
+  text-decoration: none;
+  color: #0277bd;
+}
+a:hover {
+  text-decoration: underline;
 }
