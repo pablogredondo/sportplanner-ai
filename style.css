@@ -1,75 +1,102 @@
 body {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Asegura que el cuerpo ocupe al menos toda la altura de la ventana */
+  min-height: 100vh;
   margin: 0;
-  font-family: sans-serif; /* Un ejemplo de fuente */
+  font-family: 'Arial', sans-serif; /* Un ejemplo de fuente más común */
 }
 
-header, footer {
+/* --- ESTILOS DEL ENCABEZADO CON IMAGEN DE FONDO --- */
+header {
   text-align: center;
-  padding: 20px;
-  background-color: #f0f0f0; /* Color de fondo para encabezado y pie de página */
+  padding: 80px 20px; /* Más padding para que el contenido del header no quede muy pegado a la imagen */
+  color: white; /* Color de texto blanco para que contraste con la imagen */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra al texto para mayor legibilidad */
+  background-image: url('images/sea-panoramic.jpg'); /* RUTA A TU IMAGEN */
+  background-size: cover; /* La imagen cubrirá todo el área del header */
+  background-position: center; /* Centra la imagen */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  min-height: 250px; /* Altura mínima del encabezado para que la imagen se vea bien */
+  display: flex; /* Para centrar verticalmente el contenido del header */
+  flex-direction: column;
+  justify-content: center; /* Centra el contenido verticalmente */
+  align-items: center; /* Centra el contenido horizontalmente */
 }
 
-.container {
-  flex-grow: 1; /* Permite que el contenedor principal ocupe el espacio restante */
-  display: flex;
-  justify-content: center; /* Centra el contenido horizontalmente */
-  align-items: flex-start; /* Alinea el contenido al inicio verticalmente */
-  padding: 20px; /* Un poco de espacio alrededor del contenido */
-}
-
-.full-screen-nav {
-  width: 100%; /* Ocupa todo el ancho disponible */
-  max-width: 800px; /* Opcional: Define un ancho máximo para que no se vea demasiado estirado en pantallas muy grandes */
-  text-align: center; /* Centra el texto dentro del índice */
-  background-color: #e0f2f7; /* Un color de fondo para el índice */
-  padding: 20px;
-  border-radius: 8px; /* Bordes ligeramente redondeados */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil para darle profundidad */
-}
-
-.full-screen-nav h2,
-.full-screen-nav h3 {
-  color: #333;
+header h1 {
+  font-size: 3.5em; /* Tamaño de fuente más grande para el título principal */
   margin-bottom: 10px;
 }
 
+header p {
+  font-size: 1.2em;
+}
+
+
+/* --- ESTILOS DEL CONTENEDOR PRINCIPAL Y LA NAVEGACIÓN --- */
+.container {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px; /* Aumenta el padding para que el contenido no quede tan pegado */
+  background-color: #f8f9fa; /* Un color de fondo muy suave para el área principal */
+}
+
+.full-screen-nav {
+  width: 100%;
+  max-width: 700px; /* Ligeramente más estrecho para un mejor aspecto */
+  text-align: center;
+  background-color: #ffffff; /* Fondo blanco para la navegación */
+  padding: 30px; /* Aumenta el padding interno */
+  border-radius: 12px; /* Bordes más redondeados */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+}
+
+.full-screen-nav h2 {
+  color: #2c3e50; /* Un color más oscuro para los títulos */
+  margin-bottom: 25px;
+  font-size: 2em;
+  border-bottom: 2px solid #e0e0e0; /* Línea divisoria para el título principal */
+  padding-bottom: 15px;
+}
+
+.full-screen-nav h3 {
+  color: #34495e;
+  margin-top: 30px; /* Más espacio encima de los subtítulos */
+  margin-bottom: 15px;
+  font-size: 1.5em;
+}
+
 .full-screen-nav ul {
-  list-style: none; /* Quita los puntos de la lista */
+  list-style: none;
   padding: 0;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .full-screen-nav li {
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .full-screen-nav a {
   text-decoration: none;
-  color: #007bff; /* Color de los enlaces */
-  font-weight: bold;
+  color: #2980b9; /* Un azul más vibrante para los enlaces */
+  font-weight: 600; /* Ligeramente más negrita */
+  transition: color 0.3s ease-in-out; /* Transición suave al pasar el ratón */
+  display: block; /* Para que el área del enlace sea más fácil de clickear */
+  padding: 5px 0;
 }
 
 .full-screen-nav a:hover {
+  color: #1a5276; /* Cambio de color al pasar el ratón */
   text-decoration: underline;
 }
 
-a {
-  text-decoration: none;
-  color: #0277bd;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-
-a {
-  text-decoration: none;
-  color: #0277bd;
-}
-a:hover {
-  text-decoration: underline;
+/* --- ESTILOS DEL PIE DE PÁGINA --- */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #34495e; /* Un color oscuro para el pie de página */
+  color: white;
+  font-size: 0.9em;
 }
