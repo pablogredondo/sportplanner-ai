@@ -19,13 +19,13 @@ header, footer {
 }
 
 .sidebar {
-  width: 0%; /* Reducimos el ancho */
+  width: 20%; /* Reducimos el ancho */
   padding: 20px;
   background: #fff;
 }
 
 .content {
-  width: 100%; /* Aumentamos el ancho */
+  width: 80%; /* Aumentamos el ancho */
   background-color: #cce5ff;
   padding: 20px;
   border-left: 2px solid #ccc; /* Movemos la línea divisoria */
