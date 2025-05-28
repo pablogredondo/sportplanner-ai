@@ -1,43 +1,59 @@
 body {
-  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Asegura que el cuerpo ocupe al menos toda la altura de la ventana */
   margin: 0;
-  padding: 0;
-  background: #f5f5f5;
-  color: #333;
+  font-family: sans-serif; /* Un ejemplo de fuente */
 }
 
 header, footer {
-  background: #0277bd;
-  color: white;
   text-align: center;
-  padding: 1em 0;
+  padding: 20px;
+  background-color: #f0f0f0; /* Color de fondo para encabezado y pie de página */
 }
 
 .container {
+  flex-grow: 1; /* Permite que el contenedor principal ocupe el espacio restante */
   display: flex;
-  min-height: 80vh;
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: flex-start; /* Alinea el contenido al inicio verticalmente */
+  padding: 20px; /* Un poco de espacio alrededor del contenido */
 }
 
-.sidebar {
-  width: 20%; /* Reducimos el ancho */
+.full-screen-nav {
+  width: 100%; /* Ocupa todo el ancho disponible */
+  max-width: 800px; /* Opcional: Define un ancho máximo para que no se vea demasiado estirado en pantallas muy grandes */
+  text-align: center; /* Centra el texto dentro del índice */
+  background-color: #e0f2f7; /* Un color de fondo para el índice */
   padding: 20px;
-  background: #fff;
+  border-radius: 8px; /* Bordes ligeramente redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil para darle profundidad */
 }
 
-.content {
-  width: 80%; /* Aumentamos el ancho */
-  background-color: #cce5ff;
-  padding: 20px;
-  border-left: 2px solid #ccc; /* Movemos la línea divisoria */
+.full-screen-nav h2,
+.full-screen-nav h3 {
+  color: #333;
+  margin-bottom: 10px;
 }
 
-ul {
-  list-style: none;
-  padding-left: 0;
+.full-screen-nav ul {
+  list-style: none; /* Quita los puntos de la lista */
+  padding: 0;
+  margin-bottom: 20px;
 }
 
-li {
-  margin: 0.5em 0;
+.full-screen-nav li {
+  margin-bottom: 8px;
+}
+
+.full-screen-nav a {
+  text-decoration: none;
+  color: #007bff; /* Color de los enlaces */
+  font-weight: bold;
+}
+
+.full-screen-nav a:hover {
+  text-decoration: underline;
 }
 
 a {
