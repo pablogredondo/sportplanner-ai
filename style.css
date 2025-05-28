@@ -12,7 +12,7 @@ header {
   padding: 80px 20px; /* Más padding para que el contenido del header no quede muy pegado a la imagen */
   color: white; /* Color de texto blanco para que contraste con la imagen */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra al texto para mayor legibilidad */
-  background-image: url('images/sea-panoramic.jpg'); /* RUTA A TU IMAGEN */
+  background-image: url('sea-panoramic.jpg'); /* RUTA A TU IMAGEN */
   background-size: cover; /* La imagen cubrirá todo el área del header */
   background-position: center; /* Centra la imagen */
   background-repeat: no-repeat; /* Evita que la imagen se repita */
