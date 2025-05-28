@@ -19,16 +19,16 @@ header, footer {
 }
 
 .sidebar {
-  width: 50%;
+  width: 30%; /* Reducimos el ancho */
   padding: 20px;
-  border-right: 2px solid #ccc;
   background: #fff;
 }
 
 .content {
-  width: 50%;
+  width: 70%; /* Aumentamos el ancho */
   background-color: #cce5ff;
   padding: 20px;
+  border-left: 2px solid #ccc; /* Movemos la línea divisoria */
 }
 
 ul {
@@ -39,6 +39,16 @@ ul {
 li {
   margin: 0.5em 0;
 }
+
+a {
+  text-decoration: none;
+  color: #0277bd;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 
 a {
   text-decoration: none;
