@@ -81,7 +81,9 @@
         }
 
         .full-screen-nav li a {
-            display: block;
+            display: flex; /* Use flexbox to align name and value */
+            justify-content: space-between; /* Push name to left, value to right */
+            align-items: center; /* Vertically center them */
             padding: 15px;
             text-decoration: none;
             color: #007bff;
@@ -95,7 +97,6 @@
             color: white; /* White text on colored backgrounds */
         }
 
-
         .full-screen-nav li a:hover,
         .full-screen-nav li a:active {
             background-color: #e9f5ff;
@@ -106,6 +107,16 @@
         .full-screen-nav li.bueno a:hover,
         .full-screen-nav li.malo a:hover {
             background-color: rgba(255, 255, 255, 0.2); /* Slightly transparent white on hover */
+        }
+
+        /* Style for the wind value display */
+        .wind-value {
+            font-weight: normal; /* Make the value less bold than the station name */
+            font-size: 0.9em;
+            color: inherit; /* Inherit color from parent 'a' tag */
+            margin-left: 10px; /* Spacing between name and value */
+            min-width: 70px; /* Ensure space for values and " nudos" */
+            text-align: right; /* Align value to the right */
         }
 
 
@@ -140,8 +151,10 @@
 </head>
 <body>
     <main class="container">
+        <!-- Mapa Windy -->
         <iframe src="https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=default&metricTemp=default&metricWind=kt&zoom=9&overlay=wind&product=ecmwf&level=surface&lat=28.284&lon=-16.507&message=true" height="300" allowfullscreen></iframe>
 
+        <!-- Gráfico de Bergfex recortado -->
         <div class="iframe-wrapper">
             <iframe class="bergfex" src="https://cabezo.bergfex.at/"></iframe>
         </div>
@@ -149,12 +162,32 @@
         <nav class="full-screen-nav">
             <h3>Viento</h3>
             <ul>
-                <li><a href="https://www.windy.com/28.053/-16.524?27.778,-16.524,9">Windy</a></li>
-                <li id="cabezo_button"><a href="https://cabezo.bergfex.at/">Cabezo</a></li>
-                <li id="puertitoguimar_button"><a href="https://holfuy.com/es/weather/1818">Puertito de Guímar</a></li>
-                <li id="ladera_button"><a href="https://holfuy.com/en/weather/1816">Ladera Güimar (parapente)</a></li>
-                <li id="corona_button"><a href="https://holfuy.com/en/weather/1819">La Corona (parapente)</a></li>
-                <li><a href="https://holfuy.com/en/weather/1817">Puerto de la Cruz (parapente)</a></li>
+                <li><a href="https://www.windy.com/28.053/-16.524?27.778,-16.524,9"><span>Windy</span></a></li>
+                <li id="cabezo_item">
+                    <a href="https://cabezo.bergfex.at/">
+                        <span>Cabezo</span> 
+                        <span class="wind-value">--</span> <!-- Placeholder for wind value -->
+                    </a>
+                </li>
+                <li id="puertitoguimar_item">
+                    <a href="https://holfuy.com/es/weather/1818">
+                        <span>Puertito de Guímar</span> 
+                        <span class="wind-value">--</span> <!-- Placeholder for wind value -->
+                    </a>
+                </li>
+                <li id="ladera_item">
+                    <a href="https://holfuy.com/en/weather/1816">
+                        <span>Ladera Güimar (parapente)</span> 
+                        <span class="wind-value">--</span> <!-- Placeholder for wind value -->
+                    </a>
+                </li>
+                <li id="corona_item">
+                    <a href="https://holfuy.com/en/weather/1819">
+                        <span>La Corona (parapente)</span> 
+                        <span class="wind-value">--</span> <!-- Placeholder for wind value -->
+                    </a>
+                </li>
+                <li><a href="https://holfuy.com/en/weather/1817"><span>Puerto de la Cruz (parapente)</span></a></li>
             </ul>
 
             <h3>Olas</h3>
@@ -194,64 +227,74 @@
     <script>
         // !! IMPORTANT !!
         // Replace 'YOUR_APPS_SCRIPT_WEB_APP_URL_HERE' with the actual URL you got from deploying your Google Apps Script.
-        const GOOGLE_APPS_SCRIPT_WEB_APP_URL = 'https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLjsgkas2wawNmcFC3D2lh1U9Rg5ccU6WUQNlp0l53vduJpOT83uQ5N0S38TGSGpM7zMrFcB4x26O8tHysO0mJ0rsSQE_GCQO3PPoR6BSgPSQPsF25E4lj8oXSBlUdxlGq2n725MQMFRri57_IMuB0tzTO4E00x2YEHCcV2A3VmCfSmroyp5xgr_r3FlpwjauPUmKjjtjD-6peykMob1zHXn1Al2RqYvavKwOIxtilJZApyfIItQteIzXEpBe51bJzz_C7ZaMFj2GQ-r2werS7P-jbTuy5gv4VK4zN96&lib=MFYt0WzqOZHsgJQohI6mB8nJmVEMfYvE3'; 
+        const GOOGLE_APPS_SCRIPT_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwJ3cxwXE2imToptstrnC53RORLapMObXGdKi0QYy6ZOqZ7Fh5djqgeKZ-lsLAO_CQEzQ/exec'; 
 
-        // Mapping between the station names in your Apps Script and the HTML list item IDs
+        // Mapping between the station names in your Apps Script response
+        // and the HTML list item IDs.
         const stationMap = {
-            "Cabezo": "cabezo_button",
-            "Puertito de Guímar": "puertitoguimar_button",
-            "Ladera Güimar (parapente)": "ladera_button",
-            "La Corona (parapente)": "corona_button"
+            "Cabezo": "cabezo_item",
+            "Puertito de Guímar": "puertitoguimar_item",
+            "Ladera Güimar (parapente)": "ladera_item",
+            "La Corona (parapente)": "corona_item"
         };
 
-        async function updateButtonColors() {
+        async function updateStationData() {
             try {
                 const response = await fetch(GOOGLE_APPS_SCRIPT_WEB_APP_URL);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 const data = await response.json();
+                console.log("Datos recibidos de Apps Script:", data); // For debugging
 
                 for (const stationName in data) {
                     const listItemId = stationMap[stationName];
-                    if (listItemId) { // Check if we have a mapping for this station
+                    const stationInfo = data[stationName]; // Get the object {status: "bueno", value: "10 kt"}
+
+                    if (listItemId && stationInfo) { // Check if we have a mapping and valid data
                         const listItem = document.getElementById(listItemId);
                         if (listItem) {
-                            // Remove existing color classes
-                            listItem.classList.remove('bueno', 'malo');
-                            // Add the new color class based on the status
-                            // Assuming data[stationName] will be "green" for "Bueno" and "red" for "Malo"
-                            // We map "green" to 'bueno' class and "red" to 'malo' class
-                            if (data[stationName] === 'green') {
-                                listItem.classList.add('bueno');
-                            } else if (data[stationName] === 'red') {
-                                listItem.classList.add('malo');
+                            // Update color based on status
+                            listItem.classList.remove('bueno', 'malo'); // Clear previous colors
+                            listItem.classList.add(stationInfo.status); // Add the new color class
+
+                            // Update wind value
+                            const windValueSpan = listItem.querySelector('.wind-value');
+                            if (windValueSpan) {
+                                // Check if the value is a number before appending " nudos"
+                                const valueAsNumber = parseFloat(stationInfo.value);
+                                const valueText = isNaN(valueAsNumber) ? '--' : `${valueAsNumber} nudos`;
+                                windValueSpan.textContent = valueText;
                             }
                         }
                     }
                 }
 
             } catch (error) {
-                console.error('Error fetching station status:', error);
+                console.error('Error fetching station data:', error);
                 // Optionally, set buttons to a 'default' or 'error' state if data fetching fails
-                // For example, set all mapped buttons to a grey background
+                // For example, set all mapped buttons to a grey background and "--" value
                 for (const stationName in stationMap) {
                     const listItem = document.getElementById(stationMap[stationName]);
                     if (listItem) {
                         listItem.classList.remove('bueno', 'malo'); // Clear previous colors
                         listItem.style.backgroundColor = '#ccc'; // Grey for error/default
+                        const windValueSpan = listItem.querySelector('.wind-value');
+                        if (windValueSpan) {
+                            windValueSpan.textContent = '--';
+                        }
                     }
                 }
             }
         }
 
-        // Initial call to update button colors when the page loads
-        updateButtonColors();
+        // Initial call to update button colors and values when the page loads
+        updateStationData();
 
-        // Periodically update button colors (e.g., every 30 seconds)
+        // Periodically update button colors and values (e.g., every 30 seconds)
         // Adjust the interval (in milliseconds) based on how frequently you want updates.
         // 30 * 1000 = 30 seconds
-        setInterval(updateButtonColors, 30 * 1000); 
+        setInterval(updateStationData, 30 * 1000); 
     </script>
 </body>
 </html>
