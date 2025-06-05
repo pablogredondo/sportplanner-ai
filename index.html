@@ -1,54 +1,257 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SportPlanner AI - Fuentes de datos</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>SportPlanner AI - Fuentes de datos</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        iframe {
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+        }
+
+        .iframe-wrapper {
+            width: 100%;
+            height: 150px; /* Altura visible reducida */
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 5px;
+        }
+
+        .iframe-wrapper iframe.bergfex {
+            height: 1000px;
+            position: absolute;
+            top: -150px;
+        }
+
+        .full-screen-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .full-screen-nav h3 {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            text-align: center;
+            font-size: 1.2em;
+        }
+
+        .full-screen-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .full-screen-nav li {
+            background-color: #ffffff; /* Default background for all list items */
+            margin-bottom: 8px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: background-color 0.3s ease; /* Smooth transition for color changes */
+        }
+
+        /* Styles for the new color classes */
+        .full-screen-nav li.bueno {
+            background-color: #4CAF50; /* Green */
+        }
+
+        .full-screen-nav li.malo {
+            background-color: #F44336; /* Red */
+        }
+
+        .full-screen-nav li a {
+            display: block;
+            padding: 15px;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            transition: color 0.3s ease; /* Smooth transition for text color */
+        }
+
+        /* Adjust link color for better contrast on colored backgrounds */
+        .full-screen-nav li.bueno a,
+        .full-screen-nav li.malo a {
+            color: white; /* White text on colored backgrounds */
+        }
+
+
+        .full-screen-nav li a:hover,
+        .full-screen-nav li a:active {
+            background-color: #e9f5ff;
+            color: #0056b3;
+        }
+
+        /* Re-adjust hover for colored buttons */
+        .full-screen-nav li.bueno a:hover,
+        .full-screen-nav li.malo a:hover {
+            background-color: rgba(255, 255, 255, 0.2); /* Slightly transparent white on hover */
+        }
+
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            color: #777;
+            font-size: 0.9em;
+            border-top: 1px solid #eee;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            .full-screen-nav h3 {
+                font-size: 1.1em;
+                padding: 12px 10px;
+            }
+
+            .full-screen-nav li a {
+                padding: 12px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <main class="container">
-    <nav class="full-screen-nav">
-      <h3>Viento</h3>
-      <ul>
-        <li><a href="https://www.windy.com/28.053/-16.524?27.778,-16.524,9">Windy</a></li>
-        <li><a href="https://cabezo.bergfex.at/">Cabezo</a></li>
-        <li><a href="https://holfuy.com/es/weather/1818">Puertito de Guímar</a></li>
-        <li><a href="https://holfuy.com/en/weather/1816">Ladera Güimar (parapente)</a></li>
-        <li><a href="https://holfuy.com/en/weather/1819">La Corona (parapente)</a></li>
-        <li><a href="https://holfuy.com/en/weather/1817">Puerto de la Cruz (parapente)</a></li>
-      </ul>
-      <h3>Olas</h3>
-      <ul>
-        <li><a href="https://es.surf-forecast.com/breaks/Playadel-Sorocco/forecasts/latest/six_day">Norte de Tenerife</a></li>
-        <li><a href="https://es.surf-forecast.com/breaks/El-Medano/forecasts/latest/six_day">Sur de Tenerife</a></li>
-        <li><a href="https://es.surf-forecast.com/breaks/El-Conquistador/forecasts/latest/six_day">Oeste de Tenerife</a></li>
-      </ul>
-      <h3>Webcams</h3>
-      <ul>
-        <li><a href="https://www.skylinewebcams.com/es/webcam/espana/canarias/santa-cruz-de-tenerife/playa-el-cabezo.html">Playa El Cabezo</a></li>
-        <li><a href="https://www.skylinewebcams.com/es/webcam/espana/canarias/santa-cruz-de-tenerife/surf-kitesurf-medano.html">Surf Kitesurf Médano</a></li>
-        <li><a href="https://www.skylinewebcams.com/es/webcam/espana/canarias/santa-cruz-de-tenerife/el-medano-playa-la-tejita.html">Playa La Tejita</a></li>
-        <li><a href="https://www.skylinewebcams.com/es/webcam/espana/canarias/santa-cruz-de-tenerife/la-caleta-costa-adeje.html">La Caleta</a></li>
-        <li><a href="https://www.skylinewebcams.com/es/webcam/espana/canarias/santa-cruz-de-tenerife/playa-troya.html">Playa Troya</a></li>
-        <li><a href="https://www.skylinewebcams.com/es/webcam/espana/canarias/santa-cruz-de-tenerife/punta-del-hidalgo.html">Punta del Hidalgo</a></li>
-        <li><a href="https://www.skylinewebcams.com/es/webcam/espana/canarias/santa-cruz-de-tenerife/candelaria.html">Candelaria</a></li>
-        <li><a href="https://www.skylinewebcams.com/es/webcam/espana/canarias/santa-cruz-de-tenerife/el-sauzal.html">El Sauzal</a></li>
-      </ul>
-        <h3>La lista de Greg</h3>
-      <ul>
-        <li><a href="https://izana.aemet.es/meteorological-data-graphs/"> Izaña (parapente)</a></li>
-        <li><a href="https://tablademareas.com/es/islas-canarias/el-medano#_mareas">Mareas</a></li>
-        <li><a href="https://www.windguru.cz/172024">Windguru Punta del Hidalgo</a></li>
-        <li><a href="https://www.windguru.cz/49357">Windguru Médano</a></li>
-        <li><a href="https://www.windguru.cz/140993">Windguru Puertito Güimar</a></li>
-        <li><a href="https://www.windguru.cz/103501">Windguru Puerto Cruz</a></li>
-      </ul>
-    </nav>
-  </main>
+    <main class="container">
+        <iframe src="https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=default&metricTemp=default&metricWind=kt&zoom=9&overlay=wind&product=ecmwf&level=surface&lat=28.284&lon=-16.507&message=true" height="300" allowfullscreen></iframe>
 
-  <footer>
-    <p>&copy; 2025 Paul MacRound</p>
-  </footer>
+        <div class="iframe-wrapper">
+            <iframe class="bergfex" src="https://cabezo.bergfex.at/"></iframe>
+        </div>
+
+        <nav class="full-screen-nav">
+            <h3>Viento</h3>
+            <ul>
+                <li><a href="https://www.windy.com/28.053/-16.524?27.778,-16.524,9">Windy</a></li>
+                <li id="cabezo_button"><a href="https://cabezo.bergfex.at/">Cabezo</a></li>
+                <li id="puertitoguimar_button"><a href="https://holfuy.com/es/weather/1818">Puertito de Guímar</a></li>
+                <li id="ladera_button"><a href="https://holfuy.com/en/weather/1816">Ladera Güimar (parapente)</a></li>
+                <li id="corona_button"><a href="https://holfuy.com/en/weather/1819">La Corona (parapente)</a></li>
+                <li><a href="https://holfuy.com/en/weather/1817">Puerto de la Cruz (parapente)</a></li>
+            </ul>
+
+            <h3>Olas</h3>
+            <ul>
+                <li><a href="https://es.surf-forecast.com/breaks/Playadel-Sorocco/forecasts/latest/six_day">Norte de Tenerife</a></li>
+                <li><a href="https://es.surf-forecast.com/breaks/El-Medano/forecasts/latest/six_day">Sur de Tenerife</a></li>
+                <li><a href="https://es.surf-forecast.com/breaks/El-Conquistador/forecasts/latest/six_day">Oeste de Tenerife</a></li>
+            </ul>
+
+            <h3>Webcams</h3>
+            <ul>
+                <li><a href="https://www.skylinewebcams.com/es/webcam/espana/canarias/santa-cruz-de-tenerife/playa-el-cabezo.html">Playa El Cabezo</a></li>
+                <li><a href="https://www.skylinewebcams.com/es/webcam/espana/canarias/santa-cruz-de-tenerife/surf-kitesurf-medano.html">Surf Kitesurf Médano</a></li>
+                <li><a href="https://www.skylinewebcams.com/es/webcam/espana/canarias/santa-cruz-de-tenerife/el-medano-playa-la-tejita.html">Playa La Tejita</a></li>
+                <li><a href="https://www.skylinewebcams.com/es/webcam/espana/canarias/santa-cruz-de-tenerife/la-caleta-costa-adeje.html">La Caleta</a></li>
+                <li><a href="https://www.skylinewebcams.com/es/webcam/espana/canarias/santa-cruz-de-tenerife/playa-troya.html">Playa Troya</a></li>
+                <li><a href="https://www.skylinewebcams.com/es/webcam/espana/canarias/santa-cruz-de-tenerife/punta-del-hidalgo.html">Punta del Hidalgo</a></li>
+                <li><a href="https://www.skylinewebcams.com/es/webcam/espana/canarias/santa-cruz-de-tenerife/candelaria.html">Candelaria</a></li>
+                <li><a href="https://www.skylinewebcams.com/es/webcam/espana/canarias/santa-cruz-de-tenerife/el-sauzal.html">El Sauzal</a></li>
+            </ul>
+
+            <h3>La lista de Greg</h3>
+            <ul>
+                <li><a href="https://izana.aemet.es/meteorological-data-graphs/">Izaña (parapente)</a></li>
+                <li><a href="https://tablademareas.com/es/islas-canarias/el-medano#_mareas">Mareas</a></li>
+                <li><a href="https://www.windguru.cz/172024">Windguru Punta del Hidalgo</a></li>
+                <li><a href="https://www.windguru.cz/49357">Windguru Médano</a></li>
+                <li><a href="https://www.windguru.cz/140993">Windguru Puertito Güimar</a></li>
+                <li><a href="https://www.windguru.cz/103501">Windguru Puerto Cruz</a></li>
+            </ul>
+        </nav>
+    </main>
+    <footer>
+        <p>&copy; 2025 Paul MacRound</p>
+    </footer>
+
+    <script>
+        // !! IMPORTANT !!
+        // Replace 'YOUR_APPS_SCRIPT_WEB_APP_URL_HERE' with the actual URL you got from deploying your Google Apps Script.
+        const GOOGLE_APPS_SCRIPT_WEB_APP_URL = 'YOUR_APPS_SCRIPT_WEB_APP_URL_HERE'; 
+
+        // Mapping between the station names in your Apps Script and the HTML list item IDs
+        const stationMap = {
+            "Cabezo": "cabezo_button",
+            "Puertito de Guímar": "puertitoguimar_button",
+            "Ladera Güimar (parapente)": "ladera_button",
+            "La Corona (parapente)": "corona_button"
+        };
+
+        async function updateButtonColors() {
+            try {
+                const response = await fetch(GOOGLE_APPS_SCRIPT_WEB_APP_URL);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+
+                for (const stationName in data) {
+                    const listItemId = stationMap[stationName];
+                    if (listItemId) { // Check if we have a mapping for this station
+                        const listItem = document.getElementById(listItemId);
+                        if (listItem) {
+                            // Remove existing color classes
+                            listItem.classList.remove('bueno', 'malo');
+                            // Add the new color class based on the status
+                            // Assuming data[stationName] will be "green" for "Bueno" and "red" for "Malo"
+                            // We map "green" to 'bueno' class and "red" to 'malo' class
+                            if (data[stationName] === 'green') {
+                                listItem.classList.add('bueno');
+                            } else if (data[stationName] === 'red') {
+                                listItem.classList.add('malo');
+                            }
+                        }
+                    }
+                }
+
+            } catch (error) {
+                console.error('Error fetching station status:', error);
+                // Optionally, set buttons to a 'default' or 'error' state if data fetching fails
+                // For example, set all mapped buttons to a grey background
+                for (const stationName in stationMap) {
+                    const listItem = document.getElementById(stationMap[stationName]);
+                    if (listItem) {
+                        listItem.classList.remove('bueno', 'malo'); // Clear previous colors
+                        listItem.style.backgroundColor = '#ccc'; // Grey for error/default
+                    }
+                }
+            }
+        }
+
+        // Initial call to update button colors when the page loads
+        updateButtonColors();
+
+        // Periodically update button colors (e.g., every 30 seconds)
+        // Adjust the interval (in milliseconds) based on how frequently you want updates.
+        // 30 * 1000 = 30 seconds
+        setInterval(updateButtonColors, 30 * 1000); 
+    </script>
 </body>
 </html>
